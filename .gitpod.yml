@@ -6,8 +6,9 @@ tasks:
 
     init: |
       mkdir -p /workspace/.ghcup/bin || true
-      curl -sSL https://downloads.haskell.org/~ghcup/x86_64-linux-ghcup \
-            -o /workspace/.ghcup/bin/ghcup
+      mkdir -p /workspace/.cabal || true
+      export BOOTSTRAP_HASKELL_NONINTERACTIVE=1
+      curl -sSL https://downloads.haskell.org/~ghcup/x86_64-linux-ghcup -o /workspace/.ghcup/bin/ghcup
       chmod a+x /workspace/.ghcup/bin/ghcup
       # Install cabal
       ghcup install cabal 3.6.2.0
